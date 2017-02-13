@@ -4,8 +4,6 @@ $(function(){
 
 });
 
-
-// Petit script pour connaitre la date de la dernière modification :D
 lastUpdate();
 
 function lastUpdate() {
