@@ -2,6 +2,12 @@ $(function(){
 
    console.log('jQuery est prêt !');
 
+   
+
+   $( "body" ).keypress(function() {
+  		$( ".menu" ).append("Travaux");
+	});
+
 });
 
 
