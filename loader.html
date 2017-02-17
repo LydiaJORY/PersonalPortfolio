@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>LOADER</title>
+
+	<meta name="description" content="Lydia JORY, Designer interactif" />
+	<META NAME="keywords" CONTENT="portfolio, Design interactif, UI, UX, Motion Design, Illustration, Front-end, Paris"> 
+	<meta NAME="author" content="Lydia JORY" />	
+
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="dist/font-awesome.min.css">
+
+
+	<link rel="icon" href="favicon.ico" />	
+
+	
+</head>
+
+
+<body>
+	
+	<b>HELLO WORLD</b>
+	<canvas id="gameCanvas" width="800" height="600"></canvas>
+
+	<script>
+		
+		var canvas;
+		var canvasContext;
+		var ballX =50;
+
+		window.onload = function(){
+
+			console.log("hey");
+			canvas = document.getElementById('gameCanvas');
+			canvasContext = canvas.getContext('2d');
+
+			var framesPerSecond = 30;
+			
+			setInterval(function (){
+				moveEverything();
+				drawEverything();
+			}, 1000/framesPerSecond);
+			
+		}
+
+
+		function moveEverything(){
+
+			ballX =  ballX + 5;
+
+		}
+
+		function drawEverything(){
+
+			canvasContext.fillStyle = 'black';
+			canvasContext.fillRect(0,0,canvas.width, canvas.height);
+			canvasContext.fillStyle = 'green';
+			canvasContext.fillRect(ballX,200,50,25);
+			canvasContext.fillStyle = 'pink';
+			canvasContext.fillRect(0,210,20,100);
+		}
+
+		
+
+	</script>
+
+ 
+
+
+
+</body>
+</html>

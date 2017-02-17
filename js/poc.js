@@ -4,6 +4,9 @@ $(function(){
 
 
 // PRESS START BUTTON
+
+	var $menu = $("<p class="menu"></p>"),
+		
   
    $( "body" ).keypress(function() {
   		$( ".menu" ).append("Travaux");
