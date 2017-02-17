@@ -2,8 +2,9 @@ $(function(){
 
    console.log('jQuery est prêt !');
 
-   
 
+// PRESS START BUTTON
+  
    $( "body" ).keypress(function() {
   		$( ".menu" ).append("Travaux");
 	});
