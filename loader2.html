@@ -30,17 +30,18 @@
 	<script>
 
 		// Variables globales :)
-		var canvas;
+
+		var canvas = document.getElementById('gameCanvas');
 		var canvasContext;
-		var ballX = 50;
 		var BallY;
 		var ballXSpeedX = 10;
-		var ballSize = 100;
+		var ballSize = 10;
+		var ballX = ballSize;
 
 
 		window.onload = function(){
 
-			canvas = document.getElementById('gameCanvas');
+			
 			canvasContext = canvas.getContext('2d');
 
 			var framesPerSecond = 30;
@@ -64,7 +65,7 @@
 			}
 
 			// Rebondis au bord gauche
-			if (ballX > 0 ) {
+			if (ballX > 0 + ballSize) {
 				ballXSpeedX = -ballXSpeedX;
 			}
 
