@@ -25,24 +25,25 @@
 	
 	<b>HELLO WORLD</b>
 	<canvas id="gameCanvas" width="800" height="600"></canvas>
+	https://www.udemy.com/code-your-first-game/learn/v4/t/lecture/2701828
 
 
 	<script>
 
 		// Variables globales :)
-
 		var canvas = document.getElementById('gameCanvas');
-		var canvasContext;
-		var BallY;
+		var canvasContext = canvas.getContext('2d');;
+		var ballY = 50;
 		var ballXSpeedX = 10;
+		var ballYSpeedY = 4;
 		var ballSize = 10;
-		var ballX = ballSize;
+		var ballX = 10;
 
+		var paddlePV1Y = 250;
+		const PADDLE_HEIGHT = 100;
 
+		
 		window.onload = function(){
-
-			
-			canvasContext = canvas.getContext('2d');
 
 			var framesPerSecond = 30;
 			
@@ -51,15 +52,20 @@
 				moveEverything();
 				drawEverything();
 			}, 1000/framesPerSecond);
-			
+
+			canvas.addEventListener('mousemove',function(evt){
+				var mousePos = calculateMousePos(evt);
+				paddlePV1Y = mousePos.y - (PADDLE_HEIGHT/2);
+			})
 		}
 
 
 		function moveEverything(){
 
 			ballX =  ballX + ballXSpeedX;
+			ballY =  ballY + ballYSpeedY;
 
-			// Rebondis au bord droite
+			// Rebondis au bord droit
 			if (ballX < canvas.width - ballSize) {
 				ballXSpeedX = -ballXSpeedX;
 			}
@@ -69,31 +75,55 @@
 				ballXSpeedX = -ballXSpeedX;
 			}
 
+			// Rebondis au bord bas
+			if (ballY < canvas.height - ballSize) {
+				ballYSpeedY = -ballYSpeedY;
+			}
+
+			// Rebondis au bord haut
+			if (ballY > 0 + ballSize) {
+				ballYSpeedY = -ballYSpeedY;
+			}
 		}
 
-		function drawEverything(){
 
+		function drawEverything(){
 			// BG
 			colorRect(0,0,canvas.width, canvas.height, 'black' )
 			
 			//Paddle left
-			colorRect(0,210, 10, 100, 'white');
-			
+			colorRect(0,paddlePV1Y, 10, PADDLE_HEIGHT, 'white');
+
+			//Balle
+			colorCircle(ballX,ballY,ballSize,'white');	
+		}
+
+
+		function colorCircle (centerX, centerY, radius, drawColor) {
 			//Balle
 			canvasContext.fillStyle = 'white';
 			canvasContext.beginPath();
-			canvasContext.arc(ballX,100, ballSize,0,Math.PI*2, true);
+			canvasContext.arc(centerX,centerY, radius,0,Math.PI*2, true);
 			canvasContext.fill();
-			
 		}
+
 
 		function colorRect (leftX,topY, width, height, drawColor){
 			canvasContext.fillStyle = drawColor;
 			canvasContext.fillRect(leftX,topY,width,height);
-
-
 		}
-		
+
+
+		function  calculateMousePos(evt){
+			var rect = canvas.getBoundingClientRect();
+			var root = document.documentElement;
+			var mouseX =  evt.clientX - rect.left - root.scrollLeft;
+			var mouseY = evt.clientY - rect.top - root.scrollTop;
+			return {
+				x:mouseX,
+				y:mouseY
+			};
+		}
 
 	</script>
 
