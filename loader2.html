@@ -25,7 +25,6 @@
 	
 	<b>HELLO WORLD</b>
 	<canvas id="gameCanvas" width="800" height="600"></canvas>
-	https://www.udemy.com/code-your-first-game/learn/v4/t/lecture/2701828
 
 
 	<script>
@@ -33,14 +32,17 @@
 		// Variables globales :)
 		var canvas = document.getElementById('gameCanvas');
 		var canvasContext = canvas.getContext('2d');;
+
 		var ballY = 50;
-		var ballXSpeedX = 10;
 		var ballYSpeedY = 4;
-		var ballSize = 10;
 		var ballX = 10;
+		var ballXSpeedX = 10;
+		var ballSize = 10;
 
 		var paddlePV1Y = 250;
+		var paddlePV2Y = 250;
 		const PADDLE_HEIGHT = 100;
+		const PADDLE_WIDTH = 10;
 
 		
 		window.onload = function(){
@@ -65,13 +67,26 @@
 			ballX =  ballX + ballXSpeedX;
 			ballY =  ballY + ballYSpeedY;
 
-			// Rebondis au bord droit
-			if (ballX < canvas.width - ballSize) {
-				ballXSpeedX = -ballXSpeedX;
+			
+			// Rebondis au bord gauche
+			if (ballX < 0 + ballSize) {
+
+				if (ballY > paddlePV1Y && 
+					ballY < paddlePV1Y+PADDLE_HEIGHT) {
+						ballXSpeedX = -ballXSpeedX;
+					}
+
+				else {
+					// YOU LOOSE
+					ballReset();
+
+				}
+				
+				
 			}
 
-			// Rebondis au bord gauche
-			if (ballX > 0 + ballSize) {
+			// Rebondis au bord droit
+			if (ballX > canvas.width - ballSize) {
 				ballXSpeedX = -ballXSpeedX;
 			}
 
@@ -91,8 +106,12 @@
 			// BG
 			colorRect(0,0,canvas.width, canvas.height, 'black' )
 			
-			//Paddle left
+			//Paddle left, PV1
 			colorRect(0,paddlePV1Y, 10, PADDLE_HEIGHT, 'white');
+
+			//Paddle Right, PV2
+			colorRect(canvas.width-10,paddlePV2Y, 10, PADDLE_HEIGHT, 'white');
+
 
 			//Balle
 			colorCircle(ballX,ballY,ballSize,'white');	
@@ -107,12 +126,10 @@
 			canvasContext.fill();
 		}
 
-
 		function colorRect (leftX,topY, width, height, drawColor){
 			canvasContext.fillStyle = drawColor;
 			canvasContext.fillRect(leftX,topY,width,height);
 		}
-
 
 		function  calculateMousePos(evt){
 			var rect = canvas.getBoundingClientRect();
@@ -125,6 +142,12 @@
 			};
 		}
 
+		function ballReset(){
+			ballXSpeedX = -ballXSpeedX;
+			ballX = canvas.width/2;
+			ballY = canvas.height/2;
+			
+		}
 	</script>
 
  

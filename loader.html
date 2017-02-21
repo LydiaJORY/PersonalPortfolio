@@ -24,6 +24,7 @@
 <body>
 	
 	<b>HELLO WORLD</b>
+	https://www.udemy.com/code-your-first-game/learn/v4/t/lecture/2701884
 	<canvas id="gameCanvas" width="800" height="600"></canvas>
 
 
@@ -32,13 +33,22 @@
 		// Variables globales :)
 		var canvas = document.getElementById('gameCanvas');
 		var canvasContext = canvas.getContext('2d');;
+
 		var ballY = 50;
-		var ballXSpeedX = 10;
 		var ballYSpeedY = 4;
-		var ballSize = 10;
 		var ballX = 10;
+		var ballXSpeedX = 10;
+		var ballSize = 10;
 
+		var paddlePV1Y = 250;
+		var paddlePV2Y = 250;
+		const PADDLE_HEIGHT = 100;
+		const PADDLE_WIDTH = 10
 
+		var playerPV1Score=0;
+		var playerPV2Score=0;
+
+		
 		window.onload = function(){
 
 			var framesPerSecond = 30;
@@ -48,22 +58,55 @@
 				moveEverything();
 				drawEverything();
 			}, 1000/framesPerSecond);
+
+			canvas.addEventListener('mousemove',function(evt){
+				var mousePos = calculateMousePos(evt);
+				paddlePV1Y = mousePos.y - (PADDLE_HEIGHT/2);
+			})
 		}
 
 
 		function moveEverything(){
 
-			ballX =  ballX + ballXSpeedX;
-			//ballY =  ballY + ballYSpeedY;
+			IA();
 
-			// Rebondis au bord droite
-			if (ballX < canvas.width - ballSize) {
-				ballXSpeedX = -ballXSpeedX;
+			ballX += ballXSpeedX;
+			ballY += ballYSpeedY;
+
+			
+			// Rebondis au bord gauche
+			if (ballX < 0 + ballSize) {
+
+				if (ballY > paddlePV1Y && 
+					ballY < paddlePV1Y+PADDLE_HEIGHT) {
+						ballXSpeedX = -ballXSpeedX;
+					}
+
+				else {
+					// YOU LOOSE
+					playerPV2Score++;
+					ballReset();
+					alert('PERDU');
+					
+				}
 			}
 
-			// Rebondis au bord gauche
-			if (ballX > 0 + ballSize) {
-				ballXSpeedX = -ballXSpeedX;
+			// Rebondis au bord droit
+			if (ballX > canvas.width - ballSize) {
+
+				if (ballY > paddlePV2Y &&
+					ballY < paddlePV2Y+PADDLE_HEIGHT){
+					ballXSpeedX = -ballXSpeedX;
+
+				}
+				else {
+					// YOU LOOSE
+					playerPV1Score++;
+					ballReset();
+
+					
+				}
+				
 			}
 
 			// Rebondis au bord bas
@@ -82,11 +125,19 @@
 			// BG
 			colorRect(0,0,canvas.width, canvas.height, 'black' )
 			
-			//Paddle left
-			colorRect(0,210, 10, 100, 'white');
+			//Paddle left, PV1
+			colorRect(0,paddlePV1Y, PADDLE_WIDTH, PADDLE_HEIGHT, 'white');
+
+			//Paddle Right, PV2
+			colorRect(canvas.width-PADDLE_WIDTH,paddlePV2Y, PADDLE_WIDTH, PADDLE_HEIGHT, 'white');
+
 
 			//Balle
-			colorCircle(ballX,150,ballSize,'white');	
+			colorCircle(ballX,ballY,ballSize,'white');	
+
+			canvasContext.fillText("SCORE :", canvas.width-100,20);
+			canvasContext.fillText(playerPV1Score, canvas.width-100,30);
+			canvasContext.fillText(playerPV2Score, canvas.width-90,30);
 		}
 
 
@@ -102,7 +153,39 @@
 			canvasContext.fillStyle = drawColor;
 			canvasContext.fillRect(leftX,topY,width,height);
 		}
-		
+
+		function  calculateMousePos(evt){
+			var rect = canvas.getBoundingClientRect();
+			var root = document.documentElement;
+			var mouseX =  evt.clientX - rect.left - root.scrollLeft;
+			var mouseY = evt.clientY - rect.top - root.scrollTop;
+			return {
+				x:mouseX,
+				y:mouseY
+			};
+		}
+
+		function ballReset(){
+			ballXSpeedX = -ballXSpeedX;
+			ballX = canvas.width/2;
+			ballY = canvas.height/2;
+			
+		}
+
+		function IA () {
+
+			var paddlePV2YCenter = paddlePV2Y + (PADDLE_HEIGHT/2);
+
+			if (paddlePV2YCenter < ballY-35){
+
+				paddlePV2Y +=6;
+			}
+			else if (paddlePV2YCenter > ballY+35){
+				paddlePV2Y -=6;
+
+			}
+
+		}
 
 	</script>
 
