@@ -1,15 +1,19 @@
 $(function(){
 
-   console.log('jQuery est prêt !');
+   console.log('jQuery');
+
 
 
 // PRESS START BUTTON
 
-	var $menu = $("<p class="menu"></p>"),
+	
 		
-  
    $( "body" ).keypress(function() {
-  		$( ".menu" ).append("Travaux");
+  		$(".pressStart").hide();
+  		console.log('test');
+  		$( "nav" ).show();
+
+
 	});
 
 });

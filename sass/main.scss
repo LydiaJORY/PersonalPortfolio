@@ -1,0 +1,42 @@
+/**
+ * Bootstrap
+ */
+@import "bootstrap";
+
+/**
+ * Fonts
+ */
+@import "fonts";
+/**
+ * Font-awesome
+ */
+@import "font-awesome";
+
+
+body {
+	color:white;
+	background: #222;
+}
+
+h1,h2, h3 {
+	text-align: center;
+}
+
+h1 {
+	font-size: 20em;
+}
+.social {
+	margin: 10px 0 0 0;
+}
+
+.lastUpdate {
+	position: absolute;
+	bottom: 0px;
+	right: 10px;
+}
+
+nav {
+	display: none;
+}
+
+
