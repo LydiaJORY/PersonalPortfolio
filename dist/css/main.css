@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /**
  * Bootstrap
  */
@@ -3545,6 +3546,9 @@ body {
   color: white;
   background: #222; }
 
+div {
+  transition: width 0.6s ease-out, margin 0.6s ease-out; }
+
 h1, h2, h3 {
   text-align: center; }
 
@@ -3559,8 +3563,27 @@ h1 {
   bottom: 0px;
   right: 10px; }
 
+@keyframes menu {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
 nav {
   display: none; }
 
-nav .menu {
-  display: block; }
+.menu {
+  display: block;
+  opacity: 0;
+  animation: menu ease-out 1;
+  animation-fill-mode: forwards;
+  animation-duration: 1.3s;
+  animation-delay: 0.8s;
+  animation-iteration-count: 1;
+  /**
+ * infinite pour le faire a l'infini ^^
+ animation-direction: reverse; pour le faire à l'envers. et 'alternate' pour le faire une fois dans un sens et une fois dans l'autre ^^
+ */ }
+
+.startPress {
+  transition: 4s; }

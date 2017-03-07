@@ -5,13 +5,17 @@ $(function(){
 
 
 // PRESS START BUTTON
-
-	
 		
    $( "body" ).keypress(function() {
+
   		$(".pressStart").hide();
-  		console.log('test');
-  		$( "nav" ).show();
+  		$( "nav" ).addClass("menu");
+      $(".title").addClass("startPress");
+      $( "#title" ).toggleClass( "col-lg-offset-3 col-lg-offset-1" ) 
+
+      
+
+
 
 
 	});
