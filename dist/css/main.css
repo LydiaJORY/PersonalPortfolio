@@ -3553,7 +3553,9 @@ h1, h2, h3 {
   text-align: center; }
 
 h1 {
-  font-size: 20em; }
+  font-size: 20em;
+  /* margin-top: 50vh; 
+  	transform: translateY(-50%);poussé de la moitié de hauteur de viewport */ }
 
 .social {
   top: 20px;
