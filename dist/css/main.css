@@ -3556,7 +3556,9 @@ h1 {
   font-size: 20em; }
 
 .social {
-  margin: 10px 0 0 0; }
+  top: 20px;
+  right: 20px;
+  position: absolute; }
 
 .lastUpdate {
   position: absolute;
@@ -3587,3 +3589,8 @@ nav {
 
 .startPress {
   transition: 4s; }
+
+.contact {
+  display: none;
+  font-size: 50px;
+  opacity: 0.5; }

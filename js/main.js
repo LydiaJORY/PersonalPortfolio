@@ -4,26 +4,36 @@ $(function(){
 
    var hauteurFenetre   = $( window ).height();
    var millieuFenetre = hauteurFenetre / 2;
+   var pressStart = false;
 
 
   // SYSTHEME DE NAVIGATION PAR ECRAN
 
-  $('.contact').hide();
-  $('.homepage').css({'height': hauteurFenetre});
+  
+  //$('.homepage').css({'height': hauteurFenetre});
 
+  
+  $('.page').click(function() {
 
+    //$('.page').hide();
+    $(".pageContact").show();
+    
+  });
 
 
   // PRESS START BUTTON
   		
-     $( "body" ).keypress(function() {
+    $( "body" ).keypress(function() {
 
-    		$(".pressStart").hide();
-    		$( "nav" ).addClass("menu");
+      pressStart = true;
+
+      if(pressStart) {
+
+        $(".pressStart").hide();
+        $( "nav" ).addClass("menu");
         $(".title").addClass("startPress");
-        $( "#title" ).toggleClass( "col-lg-offset-3 col-lg-offset-1" ) 
-
-
+        $( "#title" ).addClass( "col-lg-offset-1" ) 
+      }
   	});
   });
 

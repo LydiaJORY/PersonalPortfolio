@@ -32,7 +32,9 @@ h1 {
 }
 
 .social {
-	margin: 10px 0 0 0;
+	top: 20px;
+	right: 20px;
+	position: absolute;
 }
 
 .lastUpdate {
@@ -70,6 +72,14 @@ nav {
 	
   transition: 4s;
 }
+
+
+.contact {
+	display: none;
+	font-size: 50px;
+	opacity: 0.5;
+}
+
 
 
 
