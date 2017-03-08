@@ -9,14 +9,14 @@ $(function(){
 
   // SYSTHEME DE NAVIGATION PAR ECRAN
 
-  
   //$('.homepage').css({'height': hauteurFenetre});
 
   
   $('.page').click(function() {
 
-    //$('.page').hide();
-    $(".pageContact").show();
+    $('.homepage').hide();
+    $(".pageContact").css("display", "block");
+    
     
   });
 
@@ -36,8 +36,6 @@ $(function(){
       }
   	});
   });
-
-
 
 
 // VANILLA JS
