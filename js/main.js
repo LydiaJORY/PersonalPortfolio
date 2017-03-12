@@ -46,6 +46,7 @@ $(function(){
     $('.actualEcran').hide();
 
     var slide = $(this).attr('data-slide');
+    //$(slide).load("contact.html");  
     $(slide).css( "display", "block" );
     console.log ("affichez moi cette page contact u___u")
         
@@ -56,6 +57,7 @@ $(function(){
       $(slide).css( "display", "none" );
       $(".homepage").addClass("actualEcran");
       $(".homepage").css( "display", "block" );
+      console.log("retourner sur la homepage");
 
   });
 
