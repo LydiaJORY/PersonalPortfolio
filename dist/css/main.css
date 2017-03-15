@@ -3597,3 +3597,9 @@ nav {
   font-size: 50px;
   opacity: 0.5;
   color: red; }
+
+.menu ul li:nth-child(0n+1) {
+  border: 5px solid white; }
+
+.selected {
+  text-decoration: underline; }
