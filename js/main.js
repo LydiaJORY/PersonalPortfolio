@@ -7,9 +7,6 @@ $(function(){
     var clickOnPage = false;
     var actualEcran; // méfie toi :/ A mon avis quand tu auras des ancres et tout ça va te porter prejudice que le actual ecran soit par défaut sur homepage...
 
-   
-
-
 
 
     // PRESS START BUTTON
@@ -21,9 +18,8 @@ $(function(){
       $(".title").addClass("startPress");
       $(".homepage").addClass("actualEcran");
       $( "#title" ).removeClass( "col-lg-offset-3" ).addClass( "col-lg-offset-1" );
-
-
     }
+
 
     $( "body" ).keypress(function() {
         startButtonPressed = true;
@@ -37,6 +33,14 @@ $(function(){
 
 
     // SELECTION MENU ANIMATION ^^
+
+    var $currSelect = $( ".selected" );
+
+    $( "li" ).mouseover(function() {
+        $("*").removeClass("selected");
+        $(this).toggleClass("selected");
+        
+    });
   
 
       $(document).on('keyup', function(e) {
@@ -59,10 +63,11 @@ $(function(){
           }
 
           if (e.keyCode == 13 || e.keyCode == 32) { // enter or space
+            
               
-  
           }
       });
+
 
 
 
@@ -78,27 +83,21 @@ $(function(){
 
 
     var slide = $(this).attr('data-slide');
-    //$(slide).load("contact.html");  
     $(slide).css( "display", "block" );
     $(slide).addClass("actualEcran");
-    
 
   });
 
   $('.return').click(function() {
       var slide = $(this).attr('data-slide');
       $(slide).css( "display", "none" );
-       $(slide).addClass("actualEcran");
+      $(slide).addClass("actualEcran");
 
       $(".homepage").addClass("actualEcran");
       $(".homepage").css( "display", "block" );
-      alert("retourner sur la homepage");
-
-    });
 
 
-
-
+  });
 // FIN JQUERY
 });
 

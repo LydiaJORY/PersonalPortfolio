@@ -3549,13 +3549,10 @@ body {
 div {
   transition: width 0.6s ease-out, margin 0.6s ease-out; }
 
-h1, h2, h3 {
-  text-align: center; }
-
-h1 {
-  font-size: 20em;
-  /* margin-top: 50vh; 
-  	transform: translateY(-50%);poussé de la moitié de hauteur de viewport */ }
+main {
+  overflow: hidden;
+  width: 100%;
+  height: 100vh; }
 
 .social {
   top: 20px;
@@ -3567,16 +3564,27 @@ h1 {
   bottom: 0px;
   right: 10px; }
 
+#actualEcran {
+  display: block; }
+
+.homepage h1, .homepage h2, .homepage h3 {
+  text-align: center; }
+
+.homepage h1 {
+  font-size: 20em;
+  /* margin-top: 50vh; 
+  	transform: translateY(-50%);poussé de la moitié de hauteur de viewport */ }
+
 @keyframes menu {
   from {
     opacity: 0; }
   to {
     opacity: 1; } }
 
-nav {
+.homepage nav {
   display: none; }
 
-.menu {
+.homepage .menu {
   display: block;
   opacity: 0;
   animation: menu ease-out 1;
@@ -3585,21 +3593,22 @@ nav {
   animation-delay: 0.8s;
   animation-iteration-count: 1;
   /**
- * infinite pour le faire a l'infini ^^
- animation-direction: reverse; pour le faire à l'envers. et 'alternate' pour le faire une fois dans un sens et une fois dans l'autre ^^
- */ }
+	 * infinite pour le faire a l'infini ^^
+	 animation-direction: reverse; pour le faire à l'envers. et 'alternate' pour le faire une fois dans un sens et une fois dans l'autre ^^
+	 */ }
 
-.startPress {
+.homepage .startPress {
   transition: 2s; }
+
+.homepage .selected {
+  text-decoration: underline;
+  border: 1px red solid; }
+
+.homepage .pressed {
+  letter-spacing: 100px; }
 
 .contact {
   display: none;
   font-size: 50px;
   opacity: 0.5;
   color: red; }
-
-.menu ul li:nth-child(0n+1) {
-  border: 5px solid white; }
-
-.selected {
-  text-decoration: underline; }
