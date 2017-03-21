@@ -1,5 +1,4 @@
 'use strict';
-
  // Inclure Gulp :)
 var gulp = require('gulp');
 
@@ -16,23 +15,32 @@ gulp.task('js', function () {
     gulp.src(['./node_modules/jquery/dist/jquery.js', './js/*.js'])
         .pipe(uglify())
         .pipe(concat('scripts.js'))
-    	.pipe(gulp.dest('./dist/js/'));
+    	  .pipe(gulp.dest('./dist/js/'));
 });
 
  // Compilage de Sass :)
 gulp.task('sass', function () {
-  return gulp.src('./sass/main.scss')
+  return gulp.src('sass/*.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('./dist/css'));
+    .pipe(concat('main.css'))
+    .pipe(gulp.dest('dist/css/'));
 });
+
  
  // Watch Files For Changes
 gulp.task('watch', function () {
-  gulp.watch('./sass/**/*.scss', ['sass']);
+  gulp.watch('./sass/**/*.scss', ['sass'])
+  gulp.watch('./js/**/*.js', ['js'])
+  ;
 });
 
  // Default Task
 gulp.task('default', ['sass','js','watch']);
+
+
  
 
-
+ // dire bonjour :D
+ gulp.task('hello', function() {
+  console.log('Hello Lylyy >///<');
+});

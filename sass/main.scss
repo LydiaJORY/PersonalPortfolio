@@ -13,6 +13,10 @@
 @import "font-awesome";
 
 
+
+
+
+
 body {
 	color:white;
 	background: #222;
@@ -47,62 +51,16 @@ main {
 }
 
 
-.homepage {
-
-	h1, h2, h3 {
-	text-align: center;
-	}
-
-	h1 {
-	font-size: 20em;
-	/* margin-top: 50vh; 
-  	transform: translateY(-50%);poussé de la moitié de hauteur de viewport */
-	}
-
-
-	@keyframes menu { 
-
-	    from {  opacity:0;} 
-	    to {  opacity:1; } 
-	}
-
-	nav {
-		display: none;
-	}
-
-	.menu {
-		display: block;
-		opacity: 0;
-	    animation:menu ease-out 1;
-	    animation-fill-mode:forwards;
-	    animation-duration:1.3s;
-	    animation-delay: 0.8s;
-	    animation-iteration-count: 1;
-		/**
-	 * infinite pour le faire a l'infini ^^
-	 animation-direction: reverse; pour le faire à l'envers. et 'alternate' pour le faire une fois dans un sens et une fois dans l'autre ^^
-	 */  
-	}
-
-	.startPress {
-		
-	  transition: 2s;
-	}
-
-
-	.selected {
-
-	    text-decoration:underline;
-	    border: 1px red solid;
-	}
-
-	.pressed {
-		letter-spacing: 100px;
-	}
-}
 
 
 .contact {
+	display: none;
+	font-size: 50px;
+	opacity: 0.5;
+	color: red;
+}
+
+.travaux {
 	display: none;
 	font-size: 50px;
 	opacity: 0.5;
