@@ -1348,20 +1348,21 @@ address {
 @charset "UTF-8";
 @keyframes clipMe {
   0%, 100% {
-    clip: rect(0px, 220px, 2px, 0px); }
+    clip: rect(0px, 110px, 2px, 0px); }
   25% {
-    clip: rect(0px, 2px, 220px, 0px); }
+    clip: rect(0px, 2px, 110px, 0px); }
   50% {
-    clip: rect(218px, 220px, 220px, 0px); }
+    clip: rect(108px, 110px, 110px, 0px); }
   75% {
-    clip: rect(0px, 220px, 220px, 218px); } }
+    clip: rect(0px, 110px, 110px, 108px); } }
 
-.homepage h1, .homepage h2, .homepage h3 {
-  text-align: center; }
-
-.homepage h1 {
-  font-size: 20em;
-  /* margin-top: 50vh; 
+.homepage {
+  display: none; }
+  .homepage h1, .homepage h2, .homepage h3 {
+    text-align: center; }
+  .homepage h1 {
+    font-size: 20em;
+    /* margin-top: 50vh; 
   	transform: translateY(-50%);poussé de la moitié de hauteur de viewport */ }
 
 @keyframes menu {
@@ -1379,50 +1380,45 @@ address {
     width: 100%;
     height: 50%;
     border: 1px solid red; } }
-
-.homepage nav {
-  display: none; }
-
-.homepage .menu {
-  display: block;
-  opacity: 0;
-  animation: menu ease-out 1;
-  animation-fill-mode: forwards;
-  animation-duration: 1.3s;
-  animation-delay: 0.8s;
-  animation-iteration-count: 1;
-  /**
+  .homepage nav {
+    display: none; }
+  .homepage .menu {
+    display: block;
+    opacity: 0;
+    animation: menu ease-out 1;
+    animation-fill-mode: forwards;
+    animation-duration: 1.3s;
+    animation-delay: 0.8s;
+    animation-iteration-count: 1;
+    /**
 	 * infinite pour le faire a l'infini ^^
 	 animation-direction: reverse; pour le faire à l'envers. et 'alternate' pour le faire une fois dans un sens et une fois dans l'autre ^^
 	 */ }
-  .homepage .menu li {
-    list-style: none;
-    padding: 5px;
-    display: block;
-    width: 200px;
-    height: 70px;
-    text-transform: uppercase; }
-  .homepage .menu .selected {
-    border: red solid 2px;
-    position: relative; }
-    .homepage .menu .selected::before, .homepage .menu .selected::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: -1;
-      margin: -5%;
-      box-shadow: inset 0 0 0 2px;
-      animation: clipMe 8s linear infinite; }
-    .homepage .menu .selected::before {
-      animation-delay: -4s; }
-  .homepage .menu .startPress {
-    transition: 2s; }
-
-.homepage .pressed {
-  letter-spacing: 100px; }
+    .homepage .menu li {
+      list-style: none;
+      padding: 5px;
+      display: block;
+      width: 100px;
+      height: 100px;
+      text-transform: uppercase; }
+    .homepage .menu .selected {
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+      position: relative; }
+      .homepage .menu .selected::before, .homepage .menu .selected::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: -1;
+        margin: -5%;
+        box-shadow: inset 0 0 0 2px;
+        animation: clipMe 8s linear infinite; }
+      .homepage .menu .selected::before {
+        animation-delay: -4s; }
+  .homepage .pressed {
+    letter-spacing: 100px; }
 
 /**
  * Bootstrap
@@ -2815,4 +2811,9 @@ main {
   font-size: 50px;
   opacity: 0.5;
   color: red; }
+
+.projetBloc {
+  height: 300px;
+  width: 100%;
+  background-color: red; }
 

@@ -3,13 +3,44 @@ $(function(){
     // var hauteurFenetre   = $( window ).height();
     // var millieuFenetre = hauteurFenetre / 2;
 
-    var startButtonPressed = false;
-    var clickOnPage = false;
-    var actualEcran; // méfie toi :/ A mon avis quand tu auras des ancres et tout ça va te porter prejudice que le actual ecran soit par défaut sur homepage...
+    var PressOrClick = false;
+    var actualEcran = $(".actualEcran"); // méfie toi :/ A mon avis quand tu auras des ancres et tout ça va te porter prejudice que le actual ecran soit par défaut sur homepage...
+    var menuLi = $( "li" );
+    
+    var i = $("li").length;
+    var li = $("li");
+    var textNode;
+    var m;
 
-   
+    var classMenu = $(".menu");
+
+    var menu = [
+      "Travaux",
+      "Infos",
+      "Contact"
+      "Contact"
+    ];
+
+    var menuCategories = {"Pokedex":0,
+      "Pokemon":1,
+      "Bag":2,
+      "Options":3
+    }
+
+    for (m = 0; m < li.length; m++ ) {
+      
+      textNode = document.createTextNode(menu[m]);
+      menuOptions[m].appendChild(textNode);
+      menuOptions[m].tabIndex=1;
+    }
 
 
+    console.log(i);
+
+
+
+    $(actualEcran).show();
+    
 
 
     // PRESS START BUTTON
@@ -18,37 +49,29 @@ $(function(){
 
       $(".pressStart").hide();
       $( "nav" ).addClass("menu");
-      $(".title").addClass("startPress");
-      $(".homepage").addClass("actualEcran");
       $( "#title" ).removeClass( "col-lg-offset-3" ).addClass( "col-lg-offset-1" );
-
-
     }
 
     $( "body" ).keypress(function() {
-        startButtonPressed = true;
+        PressOrClick = true;
         preeeStartbuttonPressed();
     });
 
     $( "body" ).click(function() {
-        clickOnPage= true;
+        PressOrClick= true;
         preeeStartbuttonPressed();
     });
 
-
+  
     // SELECTION MENU ANIMATION ^^
   
-        var menuLi = $( "li" );
+      $(menuLi).mouseover(function() {
 
-        $(menuLi).mouseover(function() {
-
-          $(menuLi).removeClass("selected");
-          $(this).toggleClass("selected");
-          console.log("lol");
-      
+        $(menuLi).removeClass("selected");
+        $(this).toggleClass("selected");
       });
 
-
+     
 
       $(document).on('keyup', function(e) {
 
@@ -67,34 +90,41 @@ $(function(){
                   selected_item.next().addClass('selected');
                   selected_item.removeClass('selected');
               }
-          }
-
-          if (e.keyCode == 13 || e.keyCode == 32) { // enter or space
-              
-  
-          }
+          } 
       });
-
-
 
  // SYSTHEME DE NAVIGATION PAR ECRAN
 
 //$('.homepage').css({'height': hauteurFenetre});
-
   
   $('.lauch').click(function() {
 
     $(".homepage").removeClass("actualEcran");
     $(".homepage").hide();
 
-
     var slide = $(this).attr('data-slide');
-    //$(slide).load("contact.html");  
+    //$(slide).load("contact.html", function(){
+
+    //});  
     $(slide).css( "display", "block" );
     $(slide).addClass("actualEcran");
-    
-
   });
+
+
+  if (PressOrClick=true) {
+
+    $(document).on('keyup', function(e) {
+     
+      if (e.keyCode == 13 || e.keyCode == 32) { // enter or space
+
+              var slide = $(".menu").find(".selected").attr('data-slide'); 
+              console.log(slide); 
+              $(slide).css( "display", "block" );
+              $(slide).addClass("actualEcran");
+               console.log("donc seulement si on a deja appuyé sur le bouton start...");
+      }
+    });
+  }
 
   $('.return').click(function() {
       var slide = $(this).attr('data-slide');
@@ -104,11 +134,7 @@ $(function(){
       $(".homepage").addClass("actualEcran");
       $(".homepage").css( "display", "block" );
 
-
-    });
-
-
-
+  });
 
 // FIN JQUERY
 });

@@ -1,5 +1,6 @@
 'use strict';
- // Inclure Gulp :)
+
+ // Inclure Gulp depuis node modules :)
 var gulp = require('gulp');
 
 // Inclure les Plugins
@@ -8,6 +9,7 @@ var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var watch = require('gulp-watch');
 var uglify = require('gulp-uglify');
+
  
 
  // Concatation et minification des JS :)
@@ -39,7 +41,6 @@ gulp.task('default', ['sass','js','watch']);
 
 
  
-
  // dire bonjour :D
  gulp.task('hello', function() {
   console.log('Hello Lylyy >///<');
