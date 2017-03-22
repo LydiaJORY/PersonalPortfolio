@@ -1357,7 +1357,7 @@ address {
     clip: rect(0px, 110px, 110px, 108px); } }
 
 .homepage {
-  display: none; }
+  display: block; }
   .homepage h1, .homepage h2, .homepage h3 {
     text-align: center; }
   .homepage h1 {
@@ -2812,7 +2812,7 @@ main {
   opacity: 0.5;
   color: red; }
 
-.projetBloc {
+.travaux__Bloc {
   height: 300px;
   width: 100%;
   background-color: red; }
