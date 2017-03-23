@@ -1,153 +1,151 @@
 $(function(){
 
-  var PressOrClick = false;
-  var PressTwice = false;
-  var i;
-  var PressNumber=0;
-  console.log(PressNumber);
+  $(document).ready(function() {
 
-  var actualEcran = $(".actualEcran"); // méfie toi. A mon avis quand tu auras des ancres et tout ça va te porter prejudice que le actual ecran soit par défaut sur homepage...
-  var menuLi = $( "#menu li" );
-  
+   
+    var PressTwice = false;
+    var i;
+    var PressNumber=0;
 
-// COMPTEUR
+    function afficherNouvellePage (pageACacher,pageAMontrer) {
 
-  $(document).on('keyup', function(e) {
-
-    PressNumber++;
-    console.log(PressNumber);
-
-    if (PressNumber===1) {
-      preeeStartbuttonPressed();
-      PressOrClick=true;
+      $(pageACacher).removeClass("actualEcran");
+      $(pageACacher).hide();
+      $(pageAMontrer).css( "display", "block" );
+      $(pageAMontrer).addClass("actualEcran");
     }
 
-    if (PressNumber>=2){
-      PressTwice = true;
-      console.log(PressTwice);
+  // COMPTEUR
 
-      if (e.keyCode == 13 || e.keyCode == 32) { // enter or space
+    $(document).on('keyup', function(e) {
 
-        var slide = $(".menu").find(".selected").attr('data-slide'); 
-        console.log(slide); 
-        $(".homepage").removeClass("actualEcran");
-        $(".homepage").hide();
-        $(slide).css( "display", "block" );
-        $(slide).addClass("actualEcran");
-       
+      PressNumber++;
+
+      if (PressNumber===1) {
+        preeeStartbuttonPressed();
+
       }
+
+      if (PressNumber>=2){
+        PressTwice = true;
+
+        if (e.keyCode == 13 || e.keyCode == 32) { // enter or space
+
+          var itemActif = $("#menu").find(".selected").attr('data-slide'); 
+          var homepage = $("#homepage");
+
+          afficherNouvellePage(homepage,itemActif);
+        }
+      }
+    });
+
+    $(actualEcran).show();
+
+    // PRESS START BUTTON
+
+    function preeeStartbuttonPressed() {
+
+      $(".pressStart").hide();
+      $( "nav" ).addClass("menu");
+      $( "#title" ).removeClass( "col-lg-offset-3" ).addClass( "col-lg-offset-1" );
     }
+
+    $(homepage).click(function() {
+        preeeStartbuttonPressed();
+    });
+
+
+    // SELECTION MENU ANIMATION ^^
+
+    $(menuLi).mouseover(function() {
+
+      $(menuLi).removeClass("selected");
+      $(this).toggleClass("selected");
+    });
+
+
+    $(document).on('keyup', function(e) {
+
+        if(e.which == 38){ // up arrow
+            var selected_item = $('.selected');
+
+            if(typeof selected_item.prev()[0] !== 'undefined') {
+                selected_item.prev().addClass('selected');
+                selected_item.removeClass('selected');
+
+            }
+        } else if (e.which == 40) { // down arrow
+            var selected_item = $('.selected');
+
+            if (typeof selected_item.next()[0] !== 'undefined') {
+                selected_item.next().addClass('selected');
+                selected_item.removeClass('selected');
+            }
+        } 
+    });
+
+  // SYSTHEME DE NAVIGATION PAR ECRAN
+
+  //$('.homepage').css({'height': hauteurFenetre});
+
+  $('.lauch').click(function(e) {
+
+    e.preventDefault(); //Empêche le navigateur d'intéteprêter le fait que ce soit un vrai lien (ne le suit pas !)
+
+    $(homepage).removeClass("actualEcran");
+    $(homepage).hide();
+
+    var pageSelected = $(this).attr('data-slide');
+    //$(slide).load("contact.html", function(){
+    //});  
+    $(pageSelected).css( "display", "block" );
+    $(pageSelected).addClass("actualEcran");
   });
 
-      
 
-  $(actualEcran).show();
 
-  // PRESS START BUTTON
+  $('.return').click(function(e) {
 
-  function preeeStartbuttonPressed() {
+      e.preventDefault();
+      var slide = $(this).attr('data-slide');
+      $(slide).css( "display", "none" );
+      $(slide).removeClass("actualEcran");
 
-    $(".pressStart").hide();
-    $( "nav" ).addClass("menu");
-    $( "#title" ).removeClass( "col-lg-offset-3" ).addClass( "col-lg-offset-1" );
-  }
+      $(homepage).addClass("actualEcran");
+      $(homepage).css( "display", "block" );
 
-  $( ".homepage" ).click(function() {
-      PressOrClick= true;
-      preeeStartbuttonPressed();
   });
 
+  /*var i = $("li").length;
+    var li = $("li");
+    var textNode;
+    var m;
 
-  // SELECTION MENU ANIMATION ^^
+    var classMenu = $(".menu");
 
-  $(menuLi).mouseover(function() {
+    var menu = [
+      "Travaux",
+      "Infos",
+      "Contact"
+      "Contact"
+    ];
 
-    $(menuLi).removeClass("selected");
-    $(this).toggleClass("selected");
+    var menuCategories = {"Pokedex":0,
+      "Pokemon":1,
+      "Bag":2,
+      "Options":3
+    }
+
+    for (m = 0; m < li.length; m++ ) {
+
+      textNode = document.createTextNode(menu[m]);
+      li[m].appendChild(textNode);
+      li[m].tabIndex=1;
+    }
+
+
+    console.log(i);*/
   });
-
-
-  $(document).on('keyup', function(e) {
-
-      if(e.which == 38){ // up arrow
-          var selected_item = $('.selected');
-
-          if(typeof selected_item.prev()[0] !== 'undefined') {
-              selected_item.prev().addClass('selected');
-              selected_item.removeClass('selected');
-
-          }
-      } else if (e.which == 40) { // down arrow
-          var selected_item = $('.selected');
-
-          if (typeof selected_item.next()[0] !== 'undefined') {
-              selected_item.next().addClass('selected');
-              selected_item.removeClass('selected');
-          }
-      } 
-  });
-
-// SYSTHEME DE NAVIGATION PAR ECRAN
-
-//$('.homepage').css({'height': hauteurFenetre});
-
-$('.lauch').click(function(e) {
-
-  e.preventDefault(); //Empêche le navigateur d'intéteprêter le fait que ce soit un vrai lien (ne le suit pas !)
-  $(".homepage").removeClass("actualEcran");
-  $(".homepage").hide();
-
-  var slide = $(this).attr('data-slide');
-  //$(slide).load("contact.html", function(){
-
-  //});  
-  $(slide).css( "display", "block" );
-  $(slide).addClass("actualEcran");
-});
-
-
-
-$('.return').click(function(e) {
-
-    e.preventDefault();
-    var slide = $(this).attr('data-slide');
-    $(slide).css( "display", "none" );
-    $(slide).removeClass("actualEcran");
-
-    $(".homepage").addClass("actualEcran");
-    $(".homepage").css( "display", "block" );
-
-});
-
-/*var i = $("li").length;
-  var li = $("li");
-  var textNode;
-  var m;
-
-  var classMenu = $(".menu");
-
-  var menu = [
-    "Travaux",
-    "Infos",
-    "Contact"
-    "Contact"
-  ];
-
-  var menuCategories = {"Pokedex":0,
-    "Pokemon":1,
-    "Bag":2,
-    "Options":3
-  }
-
-  for (m = 0; m < li.length; m++ ) {
-
-    textNode = document.createTextNode(menu[m]);
-    li[m].appendChild(textNode);
-    li[m].tabIndex=1;
-  }
-
-
-  console.log(i);*/
 
 });
 

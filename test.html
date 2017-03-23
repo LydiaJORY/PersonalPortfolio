@@ -15,20 +15,46 @@
 	<link rel="stylesheet" type="text/css" href="dist/font-awesome.min.css">
 	<link rel="icon" href="favicon.ico" />	
 
+	<style>
+
+		div{
+			width: 300px;
+			height: 100px;
+			background-color: red;
+			float: left;
+			margin: 10px;
+		}
+
+		.select{
+			background-color: white;
+		}
+
+		.wrap {
+			width: 100vw;
+			height: 800px;
+			background-color: transparent;
+		}
+	</style>
+
 </head>
 
 
 <body>
 
 	<!-- RESEAUX SOCIAUX -->
-	hello world
+	<h1>hello world</h1>
 
-	<input type="text" id="target-box" >
-    <ul class="list">
-        <li class="selected">Hello</li>
-        <li>World</li>
-    </ul>
+	<div class="wrap">
+		<div class="bloc select"></div>
+		<div class="bloc"></div>
+		<div class="bloc"></div>
+		<div class="bloc"></div>
+		<div class="bloc"></div>
+	</div>
 
+	<div class="lastUpdate">
+		mis à jour le <p id="lastUpdate"></p>
+	</div>
 
  	<script src="dist/js/scripts.js"></script>
 

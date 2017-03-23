@@ -1,45 +1,22 @@
-
-$anime-time: 8s;
-$box-size: 100px;
-$clip-distance: .05;
-$clip-size: $box-size * (1 + $clip-distance * 2);
-$path-width: 2px;
-
-$main-color: white;
-
-@keyframes clipMe {
-  0%, 100% {clip: rect(0px, $clip-size, $path-width, 0px); }
-  25% {clip: rect(0px, $path-width, $clip-size, 0px); }
-  50% {clip: rect($clip-size - $path-width, $clip-size, $clip-size, 0px); }
-  75% {clip: rect(0px, $clip-size, $clip-size, $clip-size - $path-width); }
-}
-
 .homepage {
-
-	display:block;
-
-	h1, h2, h3 {
-	text-align: center;
-	}
-
-	h1 {
-	font-size: 20em;
-	/* margin-top: 50vh; 
-  	transform: translateY(-50%);poussé de la moitié de hauteur de viewport */
-	}
 
 	@keyframes menu { 
 
 	    from {  opacity:0;} 
 	    to {  opacity:1; } 
 	}
-	
-	@keyframes selectedAnim { 
 
-    from { width:0; height: 0; border:0px solid transparent; } 
-    to {  width:100%; height: 50%; border:1px solid red; } 
+	display:block;
+
+	h1, h2, h3 {
+		text-align: center;
 	}
 
+	h1 {
+		font-size: 20em;
+		/* margin-top: 50vh; 
+			transform: translateY(-50%);poussé de la moitié de hauteur de viewport */
+	}
 
 	nav {
 		display: none;
@@ -54,49 +31,18 @@ $main-color: white;
 	    animation-duration:1.3s;
 	    animation-delay: 0.8s;
 	    animation-iteration-count: 1;
-		/**
-	 * infinite pour le faire a l'infini ^^
-	 animation-direction: reverse; pour le faire à l'envers. et 'alternate' pour le faire une fois dans un sens et une fois dans l'autre ^^
-	 */  li {
+		/*
+		 * infinite pour le faire a l'infini ^^
+		 animation-direction: reverse; pour le faire à l'envers. et 'alternate' pour le faire une fois dans un sens et une fois dans l'autre ^^*/
+	   
+	   li {
 	 	list-style: none;
 	 	padding: 5px;
 	 	display: block;
 	 	width: $box-size;
 	 	height: $box-size;
 	 	text-transform: uppercase;
-
 		}
-
-	 	.selected {
-
-		box-shadow: inset 0 0 0 1px rgba($main-color, .5);
-		position: relative;
-
-
-	    &::before,
-  		&::after  {
-			
-  			content: '';
-  			position: absolute;
-			top: 0;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			z-index: -1;
-			margin: -1 * $clip-distance * 100%;
-			box-shadow: inset 0 0 0 2px; 
-		    
-		    animation: clipMe 8s linear infinite;
-  		}
-
-  		&::before {
-    		animation-delay: $anime-time * -.5;
-  		}
-
-	}
-
-
-
 	}
 	
 	.pressed {
