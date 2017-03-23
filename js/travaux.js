@@ -27,14 +27,11 @@ if ($(".contact").hasClass("actualEcran")) {
 	  		elementSelec=1;
 	  		selected.removeClass("selected");
 	  		firstProjet.addClass("selected");
-	  		console.log("revenu a zero.");
-	  		
+	
 	  	}
 	  	else {
 	  		elementSelec++;
-	  		selected.next().addClass("selected");
-	  		selected.removeClass("selected");
-	  	
+	  		selected.removeClass("selected").next().addClass("selected");
 	  	}
   	});
 }

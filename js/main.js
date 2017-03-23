@@ -12,7 +12,8 @@ $(function(){
     $(actualEcran).show();
 
     var homeattri = $(homepage).attr('data-slide'); 
-    console.log(homeattri);
+    $(homeattri).css("background","red");
+    //console.log(homeattri);
    
 });
 

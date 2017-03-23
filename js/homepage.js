@@ -8,10 +8,8 @@ $(function(){
 
     function afficherNouvellePage (pageACacher,pageAMontrer) {
 
-      $(pageACacher).removeClass("actualEcran");
-      $(pageACacher).hide();
-      $(pageAMontrer).css( "display", "block" );
-      $(pageAMontrer).addClass("actualEcran");
+      $(pageACacher).removeClass("actualEcran").hide();
+      $(pageAMontrer).css( "display", "block" ).addClass("actualEcran");
     }
 
   // COMPTEUR KeyPRESS
@@ -30,8 +28,6 @@ $(function(){
         if (e.keyCode == 13 || e.keyCode == 32) { // enter or space
 
           var itemActif = $("#menu").find(".selected").attr('data-slide'); 
-
-
           afficherNouvellePage(homepage,itemActif);
         }
       }
@@ -46,7 +42,7 @@ $(function(){
       $( "#title" ).removeClass( "col-lg-offset-3" ).addClass( "col-lg-offset-1" );
     }
 
-    $(homepage).click(function() {
+    $("body").click(function() {
         preeeStartbuttonPressed();
     });
 
@@ -65,16 +61,15 @@ $(function(){
             var selected_item = $('.selected');
 
             if(typeof selected_item.prev()[0] !== 'undefined') {
-                selected_item.prev().addClass('selected');
-                selected_item.removeClass('selected');
+                selected_item.removeClass('selected').prev().addClass('selected');
+                
 
             }
         } else if (e.which == 40) { // down arrow
             var selected_item = $('.selected');
 
             if (typeof selected_item.next()[0] !== 'undefined') {
-                selected_item.next().addClass('selected');
-                selected_item.removeClass('selected');
+                selected_item.removeClass('selected').next().addClass('selected');       
             }
         } 
     });

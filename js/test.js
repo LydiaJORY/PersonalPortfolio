@@ -24,16 +24,14 @@ $(function(){
 	  		elementSelec=1;
 	  		selected.removeClass(".select");
 	  		firstProjet.addClass("select");
-	  		console.log("revenu a zero.");
+
 	  		
 	  	}
 	  	else {
-
 	  		elementSelec++;
 	  		selected.next().addClass("select").prev().removeClass("select");
 	  		//console.log("la classe select est dans la div :" + );
 
-	  	
 	  	}
   	});
 
