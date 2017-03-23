@@ -9,7 +9,10 @@ $(function(){
     menuLi = $( "#menu li" );
     // var hauteurFenetre   = $( window ).height();
     // var millieuFenetre = hauteurFenetre / 2;
+    $(actualEcran).show();
 
+    var homeattri = $(homepage).attr('data-slide'); 
+    console.log(homeattri);
    
 });
 

@@ -2,7 +2,6 @@ $(function(){
 
   $(document).ready(function() {
 
-   
     var PressTwice = false;
     var i;
     var PressNumber=0;
@@ -15,7 +14,7 @@ $(function(){
       $(pageAMontrer).addClass("actualEcran");
     }
 
-  // COMPTEUR
+  // COMPTEUR KeyPRESS
 
     $(document).on('keyup', function(e) {
 
@@ -23,23 +22,20 @@ $(function(){
 
       if (PressNumber===1) {
         preeeStartbuttonPressed();
-
       }
 
       if (PressNumber>=2){
+        
         PressTwice = true;
-
         if (e.keyCode == 13 || e.keyCode == 32) { // enter or space
 
           var itemActif = $("#menu").find(".selected").attr('data-slide'); 
-          var homepage = $("#homepage");
+
 
           afficherNouvellePage(homepage,itemActif);
         }
       }
     });
-
-    $(actualEcran).show();
 
     // PRESS START BUTTON
 
@@ -53,7 +49,6 @@ $(function(){
     $(homepage).click(function() {
         preeeStartbuttonPressed();
     });
-
 
     // SELECTION MENU ANIMATION ^^
 
@@ -88,65 +83,24 @@ $(function(){
 
   //$('.homepage').css({'height': hauteurFenetre});
 
-  $('.lauch').click(function(e) {
+    $('.lauch').click(function(e) {
 
-    e.preventDefault(); //Empêche le navigateur d'intéteprêter le fait que ce soit un vrai lien (ne le suit pas !)
+      e.preventDefault(); //Empêche le navigateur d'intéteprêter le fait que ce soit un vrai lien (ne le suit pas !)
 
-    $(homepage).removeClass("actualEcran");
-    $(homepage).hide();
+      var pageSelected = $(this).attr('data-slide');
+      afficherNouvellePage(homepage,pageSelected);
+      
+    });
 
-    var pageSelected = $(this).attr('data-slide');
-    //$(slide).load("contact.html", function(){
-    //});  
-    $(pageSelected).css( "display", "block" );
-    $(pageSelected).addClass("actualEcran");
+    $('.return').click(function(e) {
+
+        e.preventDefault();
+        var slide = $(this).attr('data-slide');
+        
+        afficherNouvellePage(slide,homepage);
+
+    });
   });
-
-
-
-  $('.return').click(function(e) {
-
-      e.preventDefault();
-      var slide = $(this).attr('data-slide');
-      $(slide).css( "display", "none" );
-      $(slide).removeClass("actualEcran");
-
-      $(homepage).addClass("actualEcran");
-      $(homepage).css( "display", "block" );
-
-  });
-
-  /*var i = $("li").length;
-    var li = $("li");
-    var textNode;
-    var m;
-
-    var classMenu = $(".menu");
-
-    var menu = [
-      "Travaux",
-      "Infos",
-      "Contact"
-      "Contact"
-    ];
-
-    var menuCategories = {"Pokedex":0,
-      "Pokemon":1,
-      "Bag":2,
-      "Options":3
-    }
-
-    for (m = 0; m < li.length; m++ ) {
-
-      textNode = document.createTextNode(menu[m]);
-      li[m].appendChild(textNode);
-      li[m].tabIndex=1;
-    }
-
-
-    console.log(i);*/
-  });
-
 });
 
 // FIN JQUERY
