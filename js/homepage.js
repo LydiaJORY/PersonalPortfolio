@@ -2,14 +2,16 @@ $(function(){
 
   $(document).ready(function() {
 
+    var home = $(".homepage");
+
     var PressTwice = false;
     var i;
     var PressNumber=0;
 
     function afficherNouvellePage (pageACacher,pageAMontrer) {
 
-      $(pageACacher).removeClass("actualEcran").hide();
-      $(pageAMontrer).css( "display", "block" ).addClass("actualEcran");
+      $(pageACacher).removeAttr("id", "actualEcran").hide();
+      $(pageAMontrer).css( "display", "block" ).attr("actualEcran");
     }
 
   // COMPTEUR KeyPRESS
@@ -28,7 +30,7 @@ $(function(){
         if (e.keyCode == 13 || e.keyCode == 32) { // enter or space
 
           var itemActif = $("#menu").find(".selected").attr('data-slide'); 
-          afficherNouvellePage(homepage,itemActif);
+          afficherNouvellePage(home,itemActif);
         }
       }
     });
@@ -83,7 +85,7 @@ $(function(){
       e.preventDefault(); //Empêche le navigateur d'intéteprêter le fait que ce soit un vrai lien (ne le suit pas !)
 
       var pageSelected = $(this).attr('data-slide');
-      afficherNouvellePage(homepage,pageSelected);
+      afficherNouvellePage(home,pageSelected);
       
     });
 
@@ -92,7 +94,7 @@ $(function(){
         e.preventDefault();
         var slide = $(this).attr('data-slide');
         
-        afficherNouvellePage(slide,homepage);
+        afficherNouvellePage(slide,home);
 
     });
   });

@@ -10,41 +10,48 @@ $(function(){
 					"charles Denner"];
 
 	var nbTravaux= projets.length;
+	var firstProjet = $(".bloc:first-child");
+	var lastProject = $(".bloc:last-child");
 
+	// On met tous le bordel de selection un par un ici
+	var nav = function lol(){
 
-	$("div").on('click', function(e) {
-
-	  	
-	  	var selected = $('.bloc.select');
-	  	var firstProjet = $(".bloc:first-child");
+		var selected = $('.select');
 
 	  	console.log("le projet selectioné est le " + elementSelec);
 
 	  	if (elementSelec > 4){
-	  		elementSelec=1;
-	  		selected.removeClass(".select");
-	  		firstProjet.addClass("select");
 
+	  		elementSelec=1;
 	  		
+	  		lastProject.removeClass("select");
+	  		firstProjet.addClass("select");	
 	  	}
 	  	else {
 	  		elementSelec++;
 	  		selected.next().addClass("select").prev().removeClass("select");
 	  		//console.log("la classe select est dans la div :" + );
-
 	  	}
-  	});
+	}
 
-	var i;
 
-	console.log(projets[3]);
+	$(".bloc").on('click', nav);
 
+	$("body").keypress(function(e) {
+
+    if (e.which == 13) {
+    	nav();
+    }
+    
+	});
+
+
+	/*var i;
   	for (i=0; i < nbTravaux; i++) {
 
   		var projetActif = projets[i];
-  		console.log(projets[i]);
-
-  	}
+  		//console.log(projets[i]);
+  	}*/
 
 
 

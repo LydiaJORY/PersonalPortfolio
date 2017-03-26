@@ -3,7 +3,6 @@ $(function(){
     // VARIABLES GLOBAAAALES !! :D
 
     actualEcran = $("#actualEcran"); // méfie toi. A mon avis quand tu auras des ancres et tout ça va te porter prejudice que le actual ecran soit par défaut sur homepage...
-    homepage = $("#homepage");
     contact = $("#contact");
     travaux = $("#travaux");
     menuLi = $( "#menu li" );
@@ -11,9 +10,7 @@ $(function(){
     // var millieuFenetre = hauteurFenetre / 2;
     $(actualEcran).show();
 
-    var homeattri = $(homepage).attr('data-slide'); 
-    $(homeattri).css("background","red");
-    //console.log(homeattri);
+
    
 });
 

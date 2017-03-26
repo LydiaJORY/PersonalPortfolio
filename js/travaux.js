@@ -10,16 +10,14 @@ $(function(){
 					"projet5"];
 
 if ($(".contact").hasClass("actualEcran")) {
+
 	
 	$(".travaux__Bloc").on('click', function(e) {
 
 	  	var nbTravaux= projets.length;
-	  	var selected = $('.travaux__Bloc.selected');
+	  	var selected = $('.selected');
 	  	var firstProjet = $(".travaux__Bloc:first-child");
 
-
-
-	  	console.log("le nombre de div est " + nbTravaux);
 	  	console.log("le projet selectioné est le " + elementSelec);
 
 	  	if (elementSelec > nbTravaux-1){
