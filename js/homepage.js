@@ -8,6 +8,12 @@ $(function(){
     var i;
     var PressNumber=0;
 
+    var nbItemMenu= menuLi.length;
+    var elementSelec = 1;
+    var firstProjet = $("#menu li:first-child");
+    var lastProject = $("#menu li:last-child");
+
+
     function afficherNouvellePage (pageACacher,pageAMontrer) {
 
       $(pageACacher).removeAttr("id", "actualEcran").hide();
@@ -60,20 +66,35 @@ $(function(){
     $(document).on('keyup', function(e) {
 
         if(e.which == 38){ // up arrow
+
             var selected_item = $('.selected');
+            
+            if(elementSelec <= nbItemMenu && elementSelec !== 1) {
+              elementSelec--;
+              selected_item.removeClass('selected').prev().addClass('selected');
 
-            if(typeof selected_item.prev()[0] !== 'undefined') {
-                selected_item.removeClass('selected').prev().addClass('selected');
-                
-
+            } else if (elementSelec === 1) {
+                elementSelec = nbItemMenu;
+                firstProjet.removeClass("selected");
+                lastProject.addClass("selected");
             }
+
         } else if (e.which == 40) { // down arrow
+            
             var selected_item = $('.selected');
+          
+            if(elementSelec < nbItemMenu){
+              elementSelec++;
+              selected_item.removeClass('selected').next().addClass('selected');
+            }          
 
-            if (typeof selected_item.next()[0] !== 'undefined') {
-                selected_item.removeClass('selected').next().addClass('selected');       
+            else {
+              elementSelec = 1;
+              lastProject.removeClass("selected");
+              firstProjet.addClass("selected"); 
+
             }
-        } 
+} 
     });
 
   // SYSTHEME DE NAVIGATION PAR ECRAN

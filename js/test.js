@@ -39,8 +39,9 @@ $(function(){
 
 	$("body").keypress(function(e) {
 
-    if (e.which == 13) {
+    if (e.which == 13 || e.which == 39 ) {
     	nav();
+    	console.log("left");
     }
     
 	});
