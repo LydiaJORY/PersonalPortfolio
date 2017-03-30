@@ -12,12 +12,18 @@ var uglify = require('gulp-uglify');
 
 
  // Concatation et minification des JS :)
-gulp.task('js', function () {
-    gulp.src(['./node_modules/jquery/dist/jquery.js', './js/*.js'])
-        .pipe(uglify())
-        .pipe(concat('scripts.js'))
-    	  .pipe(gulp.dest('./dist/js/'));
+gulp.task('js', function (cb) {
+
+  pump([
+      gulp.src(['./node_modules/jquery/dist/jquery.js', './js/*.js']),
+          uglify(),
+          concat('scripts.js'),
+      	  gulp.dest('./dist/js/')
+    ],
+    cb
+  );
 });
+
 
  // Compilage de Sass :)
 gulp.task('sass', function () {
@@ -44,3 +50,5 @@ gulp.task('default', ['sass','js','watch']);
  gulp.task('hello', function() {
   console.log('Hello Lylyy >///<');
 });
+
+

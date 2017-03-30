@@ -1406,7 +1406,9 @@ address {
     height: 300px;
     width: 100%;
     background-color: red; }
-  .travaux .selected {
+    .travaux .travaux__Bloc:hover {
+      background-color: white; }
+  .travaux .travaux__selected {
     background-color: white; }
 
 body {

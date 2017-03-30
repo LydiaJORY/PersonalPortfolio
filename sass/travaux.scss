@@ -8,10 +8,14 @@
 	.travaux__Bloc {
 		height:300px;
 		width:100%;
-		background-color : red;
+		background-color:red;
+
+		&:hover {
+			background-color : white;
+		}
 	}
 
-	.selected {
+	.travaux__selected{
 		background-color:white;
 	}
 
