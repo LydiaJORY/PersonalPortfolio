@@ -1405,7 +1405,9 @@ address {
   .travaux .travaux__Bloc {
     height: 300px;
     width: 100%;
-    background-color: red; }
+    background-color: red;
+    font-size: 12px;
+    color: white; }
     .travaux .travaux__Bloc:hover {
       background-color: white; }
   .travaux .travaux__selected {
@@ -1431,7 +1433,14 @@ main {
 .lastUpdate {
   position: absolute;
   bottom: 0px;
-  right: 10px; }
+  right: 10px;
+  font-size: 12px; }
+
+.copyright {
+  position: absolute;
+  bottom: 0px;
+  left: 10px;
+  font-size: 12px; }
 
 #actualEcran {
   display: block; }

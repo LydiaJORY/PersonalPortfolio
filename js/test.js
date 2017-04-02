@@ -1,5 +1,5 @@
-$(function(){
-
+/*$(function(){
+	
 	var elementSelec = 1;
 
 	var projets = [
@@ -52,9 +52,9 @@ $(function(){
 
   		var projetActif = projets[i];
   		//console.log(projets[i]);
-  	}*/
+  	}
 
 
 
    
-});
+});*/

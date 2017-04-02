@@ -62,6 +62,14 @@ main {
 	position: absolute;
 	bottom: 0px;
 	right: 10px;
+	font-size:12px;
+}
+
+.copyright {
+	position: absolute;
+	bottom: 0px;
+	left: 10px;
+	font-size:12px;
 }
 
 #actualEcran {
@@ -76,10 +84,7 @@ main {
 	opacity: 0.5;
 	color: red;
 }
-
-
-
-
+ 
 
 @keyframes clipMe {
   0%, 100% {clip: rect(0px, $clip-size, $path-width, 0px); }

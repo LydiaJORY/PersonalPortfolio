@@ -1,37 +1,15 @@
 $(function(){
 
-	var elementSelec = 1;
+	// variable de travaux
+	// Boooon... je viens de passer plus de 3h a essayer de faire du Js include et j'y arrive pas ^^' Ca me déprimme donc on va tout mettre dans le fichier homepage.js en attendant ^^ Mais faudra tout rappatrier en temps voulu
 
-	var projets = [
-					"projet1",
-					"projet2",
-					"projet3",
-					"projet4",
-					"projet5"];
 
-if ($(".contact").hasClass("actualEcran")) {
 
-	
-	$(".travaux__Bloc").on('click', function(e) {
+    $(document).ready(function() {
+	      
+	        
+		      
 
-	  	var nbTravaux= projets.length;
-	  	var selected = $('.selected');
-	  	var firstProjet = $(".travaux__Bloc:first-child");
-
-	  	console.log("le projet selectioné est le " + elementSelec);
-
-	  	if (elementSelec > nbTravaux-1){
-
-	  		elementSelec=1;
-	  		selected.removeClass("selected");
-	  		firstProjet.addClass("selected");
-	
-	  	}
-	  	else {
-	  		elementSelec++;
-	  		selected.removeClass("selected").next().addClass("selected");
-	  	}
-  	});
-}
-   
+    	 
+	});
 });
