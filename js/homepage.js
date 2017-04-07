@@ -15,13 +15,17 @@ $(function(){
 //TRAVAUX
     var projetSelecNb = 1;
   
-    var firstProjet = $(".travaux__Bloc:first-child");
-    var lastProject = $(".travaux__Bloc:last-child");
+
     var projetsBloc = $(".travaux__Bloc");
+    var projetsBlocParent = $(".travaux__item");
+
+    var FirstprojetsBlocParent = $(".travaux__item:first-child");
+    var LastprojetsBlocParent = $(".travaux__item:last-child");
+
 
     var nbTravaux = projetsBloc.length;
 
-console.log("nbTravaux");
+  console.log(nbTravaux);
     
 
     // Afficher les pages 
@@ -34,22 +38,44 @@ console.log("nbTravaux");
     
         $(document).on('keyup', function(e) {
 
-          if(e.which == 39){
+          if(e.which == 39){ // >> right
           
-          var selected_projet = $('.travaux__selected');
+            var selected_projet = $('.travaux__selected');
 
-          if(projetSelecNb < nbTravaux){
+            if(projetSelecNb < nbTravaux){
 
-            projetSelecNb++;
-            console.log(projetSelecNb);
-            //selected_projet.removeClass('selected').parent($(".travaux__item").next().child($(".travaux__Bloc").addClass('selected');
-          }          
+              projetSelecNb++;
+              selected_projet.removeClass('travaux__selected').parent(projetsBlocParent).next().children(projetsBloc).addClass('travaux__selected');
+            }   
 
+            else if (projetSelecNb >= nbTravaux){
+              projetSelecNb = 1;
+              selected_projet.removeClass("travaux__selected");
+              FirstprojetsBlocParent.children(".travaux__Bloc").addClass("travaux__selected"); 
+
+            }       
+
+          }
+
+          if(e.which == 37){ // << left
+          
+            var selected_projet = $('.travaux__selected');
+
+            if(projetSelecNb <= nbTravaux && projetSelecNb !== 1){
+
+              projetSelecNb--;
+              selected_projet.removeClass('travaux__selected').parent(projetsBlocParent).prev().children(projetsBloc).addClass('travaux__selected');
+            }   
+
+            else if (projetSelecNb === 1){
+              
+              projetSelecNb = nbTravaux;
+              selected_projet.removeClass("travaux__selected");
+              LastprojetsBlocParent.children(projetsBloc).addClass("travaux__selected");
+            }       
 
           }
         });
-
-        
       } 
     }
 
