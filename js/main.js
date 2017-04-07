@@ -5,7 +5,8 @@ $(function(){
     actualEcran = $(".actualEcran"); // méfie toi. A mon avis quand tu auras des ancres et tout ça va te porter prejudice que le actual ecran soit par défaut sur homepage...
     contact = $("#contact");
     travaux = $("#travaux");
-    home = $("#homepage");
+    menuLi = $( "#menu li" );
+    homepage = $("#homepage");
 
 
     // var hauteurFenetre   = $( window ).height();
@@ -13,7 +14,6 @@ $(function(){
     $(actualEcran).show();
    
 });
-
 
 
 

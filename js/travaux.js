@@ -1,15 +1,16 @@
 $(function(){
 
-	// variable de travaux
-	// Boooon... je viens de passer plus de 3h a essayer de faire du Js include et j'y arrive pas ^^' Ca me déprimme donc on va tout mettre dans le fichier homepage.js en attendant ^^ Mais faudra tout rappatrier en temps voulu
 
 
+// MEUUUUUF !! bon en gros le probleme c'est que cette variable marche mais tu dois l'appeler dans une fonction ! idéalement pageAAfficher ! Trouve un moyen d'utiliser des fonction globales ;3
 
-    $(document).ready(function() {
-	      
-	        
-		      
+	
+$(projetsBloc).mouseover(function() {
 
-    	 
-	});
+        $(firstProjet).removeClass("travaux__selected");
+        $(this).toggleClass("travaux__selected");
+              
+    }); 
+	
+
 });

@@ -4,21 +4,57 @@ $(function(){
 
     var home = $(".homepage");
 
-    var PressTwice = false;
     var i;
     var PressNumber=0;
 
     var nbItemMenu= menuLi.length;
     var elementSelec = 1;
-    var firstProjet = $("#menu li:first-child");
-    var lastProject = $("#menu li:last-child");
+    var firstItemMenu = $("#menu li:first-child");
+    var lastItemMenu = $("#menu li:last-child");
 
+//TRAVAUX
+    var projetSelecNb = 1;
+  
+    var firstProjet = $(".travaux__Bloc:first-child");
+    var lastProject = $(".travaux__Bloc:last-child");
+    var projetsBloc = $(".travaux__Bloc");
 
+    var nbTravaux = projetsBloc.length;
+
+console.log("nbTravaux");
+    
+
+    // Afficher les pages 
     function afficherNouvellePage (pageACacher,pageAMontrer) {
 
-      $(pageACacher).removeAttr("id", "actualEcran").hide();
-      $(pageAMontrer).css( "display", "block" ).attr("actualEcran");
+      $(pageACacher).removeClass("actualEcran").hide();
+      $(pageAMontrer).css( "display", "block" ).addClass("actualEcran");
+
+      if ($(travaux).hasClass("actualEcran")) {
+    
+        $(document).on('keyup', function(e) {
+
+          if(e.which == 39){
+          
+          var selected_projet = $('.travaux__selected');
+
+          if(projetSelecNb < nbTravaux){
+
+            projetSelecNb++;
+            console.log(projetSelecNb);
+            //selected_projet.removeClass('selected').parent($(".travaux__item").next().child($(".travaux__Bloc").addClass('selected');
+          }          
+
+
+          }
+        });
+
+        
+      } 
     }
+
+
+  
 
   // COMPTEUR KeyPRESS
 
@@ -32,7 +68,6 @@ $(function(){
 
       if (PressNumber>=2){
         
-        PressTwice = true;
         if (e.keyCode == 13 || e.keyCode == 32) { // enter or space
 
           var itemActif = $("#menu").find(".selected").attr('data-slide'); 
@@ -50,6 +85,7 @@ $(function(){
       $( "#title" ).removeClass( "col-lg-offset-3" ).addClass( "col-lg-offset-1" );
     }
 
+
     $("body").click(function() {
         preeeStartbuttonPressed();
     });
@@ -63,51 +99,57 @@ $(function(){
     });
 
 
-    $(document).on('keyup', function(e) {
+    if ($(home).hasClass("actualEcran")) {
+
+      $(document).on('keyup', function(e) {
 
         if(e.which == 38){ // up arrow
 
-            var selected_item = $('.selected');
-            
-            if(elementSelec <= nbItemMenu && elementSelec !== 1) {
-              elementSelec--;
-              selected_item.removeClass('selected').prev().addClass('selected');
+          var selected_item = $('.selected');
+          
+          if(elementSelec <= nbItemMenu && elementSelec !== 1) {
 
-            } else if (elementSelec === 1) {
-                elementSelec = nbItemMenu;
-                firstProjet.removeClass("selected");
-                lastProject.addClass("selected");
-            }
+            elementSelec--;
+            selected_item.removeClass('selected').prev().addClass('selected');
+
+          } else if (elementSelec === 1) {
+              elementSelec = nbItemMenu;
+              firstItemMenu.removeClass("selected");
+              lastItemMenu.addClass("selected");
+          }
 
         } else if (e.which == 40) { // down arrow
             
-            var selected_item = $('.selected');
-          
-            if(elementSelec < nbItemMenu){
-              elementSelec++;
-              selected_item.removeClass('selected').next().addClass('selected');
-            }          
+          var selected_item = $('.selected');
+        
+          if(elementSelec < nbItemMenu){
+            elementSelec++;
+            selected_item.removeClass('selected').next().addClass('selected');
+          }          
 
-            else {
-              elementSelec = 1;
-              lastProject.removeClass("selected");
-              firstProjet.addClass("selected"); 
+          else {
+            elementSelec = 1;
+            lastItemMenu.removeClass("selected");
+            firstItemMenu.addClass("selected"); 
 
-            }
-} 
-    });
+          }
+        } 
+      });
+    }
 
-  // SYSTHEME DE NAVIGATION PAR ECRAN
+    // SYSTHEME DE NAVIGATION PAR ECRAN
 
-  //$('.homepage').css({'height': hauteurFenetre});
+    //$('.homepage').css({'height': hauteurFenetre});
 
-    $('.lauch').click(function(e) {
+      $('.lauch').click(function(e) {
 
-      e.preventDefault(); //Empêche le navigateur d'intéteprêter le fait que ce soit un vrai lien (ne le suit pas !)
+        e.preventDefault(); //Empêche le navigateur d'intéteprêter le fait que ce soit un vrai lien (ne le suit pas !)
 
-      var pageSelected = $(this).attr('data-slide');
-      afficherNouvellePage(home,pageSelected);
-      
+        var pageSelected = $(this).attr('data-slide');
+        afficherNouvellePage(home,pageSelected);
+
+        // select a projet :3 CHOOSE A CHARACTER
+        
     });
 
     $('.return').click(function(e) {
@@ -118,7 +160,8 @@ $(function(){
         afficherNouvellePage(slide,home);
 
     });
+
+
   });
 });
 
-// FIN JQUERY

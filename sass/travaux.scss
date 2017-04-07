@@ -11,15 +11,29 @@
 		background-color:red;
 		font-size: 12px;
 		color: white;
+		overflow: hidden;
 
 		&:hover {
-			background-color : white;
+			//background-color : white;
+		}
+
+		.miniature {
+
+		  
+		  display: inline-block;
+
+			img {
+			  height: 100%;
+			  cursor: pointer;
+			  
+			}
 		}
 	}
 
 	.travaux__selected{
 		background-color:white;
 	}
+
 
 
 }
