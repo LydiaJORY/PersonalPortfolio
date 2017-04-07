@@ -51,7 +51,7 @@ $(function(){
             else if (projetSelecNb >= nbTravaux){
               projetSelecNb = 1;
               selected_projet.removeClass("travaux__selected");
-              FirstprojetsBlocParent.children(".travaux__Bloc").addClass("travaux__selected"); 
+              FirstprojetsBlocParent.children(projetsBloc).addClass("travaux__selected"); 
 
             }       
 
@@ -68,10 +68,11 @@ $(function(){
             }   
 
             else if (projetSelecNb === 1){
-              
+
               projetSelecNb = nbTravaux;
               selected_projet.removeClass("travaux__selected");
-              LastprojetsBlocParent.children(projetsBloc).addClass("travaux__selected");
+              $(".end").addClass("travaux__selected");
+              //LastprojetsBlocParent.children().addClass("travaux__selected");
             }       
 
           }
