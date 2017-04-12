@@ -2,37 +2,28 @@ $(function(){
 
   $(document).ready(function() {
 
-    var home = $(".homepage");
-
     var i;
     var PressNumber=0;
-
     var nbItemMenu= menuLi.length;
     var elementSelec = 1;
     var firstItemMenu = $("#menu li:first-child");
     var lastItemMenu = $("#menu li:last-child");
 
 //TRAVAUX
-    var projetSelecNb = 1;
-  
 
+    var projetSelecNb = 1;
     var projetsBloc = $(".travaux__Bloc");
     var projetsBlocParent = $(".travaux__item");
-
     var FirstprojetsBlocParent = $(".travaux__item:first-child");
     var LastprojetsBlocParent = $(".travaux__item:last-child");
-
-
     var nbTravaux = projetsBloc.length;
-
-  console.log(nbTravaux);
     
 
     // Afficher les pages 
     function afficherNouvellePage (pageACacher,pageAMontrer) {
 
       $(pageACacher).removeClass("actualEcran").hide();
-      $(pageAMontrer).css( "display", "block" ).addClass("actualEcran");
+      $(pageAMontrer).show().addClass("actualEcran");
 
       if ($(travaux).hasClass("actualEcran")) {
     
@@ -52,9 +43,7 @@ $(function(){
               projetSelecNb = 1;
               selected_projet.removeClass("travaux__selected");
               FirstprojetsBlocParent.children(projetsBloc).addClass("travaux__selected"); 
-
             }       
-
           }
 
           if(e.which == 37){ // << left
@@ -74,14 +63,10 @@ $(function(){
               $(".end").addClass("travaux__selected");
               //LastprojetsBlocParent.children().addClass("travaux__selected");
             }       
-
           }
         });
       } 
     }
-
-
-  
 
   // COMPTEUR KeyPRESS
 
@@ -98,7 +83,7 @@ $(function(){
         if (e.keyCode == 13 || e.keyCode == 32) { // enter or space
 
           var itemActif = $("#menu").find(".selected").attr('data-slide'); 
-          afficherNouvellePage(home,itemActif);
+          afficherNouvellePage(homepage,itemActif);
         }
       }
     });
@@ -126,7 +111,7 @@ $(function(){
     });
 
 
-    if ($(home).hasClass("actualEcran")) {
+    if ($(homepage).hasClass("actualEcran")) {
 
       $(document).on('keyup', function(e) {
 
@@ -158,7 +143,6 @@ $(function(){
             elementSelec = 1;
             lastItemMenu.removeClass("selected");
             firstItemMenu.addClass("selected"); 
-
           }
         } 
       });
@@ -166,29 +150,19 @@ $(function(){
 
     // SYSTHEME DE NAVIGATION PAR ECRAN
 
-    //$('.homepage').css({'height': hauteurFenetre});
+    $('.lauch').click(function(e) {
 
-      $('.lauch').click(function(e) {
-
-        e.preventDefault(); //Empêche le navigateur d'intéteprêter le fait que ce soit un vrai lien (ne le suit pas !)
-
-        var pageSelected = $(this).attr('data-slide');
-        afficherNouvellePage(home,pageSelected);
-
-        // select a projet :3 CHOOSE A CHARACTER
-        
+      e.preventDefault(); //Empêche le navigateur d'intéteprêter le fait que ce soit un vrai lien (ne le suit pas !)
+      var pageSelected = $(this).attr('data-slide');
+      afficherNouvellePage(homepage,pageSelected);
     });
 
     $('.return').click(function(e) {
 
         e.preventDefault();
         var slide = $(this).attr('data-slide');
-        
-        afficherNouvellePage(slide,home);
-
+        afficherNouvellePage(slide,homepage);
     });
-
-
   });
 });
 

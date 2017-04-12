@@ -1,11 +1,9 @@
 .travaux {
 
 	display: none;
-	font-size: 50px;
-	opacity: 0.5;
-	color: red;
 
 	.travaux__Bloc {
+
 		height:300px;
 		width:100%;
 		background-color:red;
@@ -13,19 +11,41 @@
 		color: white;
 		overflow: hidden;
 
-		&:hover {
-			//background-color : white;
-		}
-
 		.miniature {
 
-		  
-		  display: inline-block;
+			overflow: hidden;
+			height:100%;
+			width:100%;
 
 			img {
-			  height: 100%;
-			  cursor: pointer;
-			  
+				height: 100%;
+				cursor: pointer;
+
+				&:hover{
+					opacity: 0.2;
+					height: 500px;
+				}
+			}
+		}
+
+		.sliderWrap {
+
+			width: 850px;
+			overflow:hidden;
+			position:relative;
+
+			.slider {
+				width: 11900px; /* !! tu ne peux pour le moment stocker pas plus de 14 images dans le slider */
+				overflow:hidden;
+			}
+
+			.slider li {
+
+				float:left;
+
+				img {
+					vertical-align:middle;
+				}
 			}
 		}
 	}
@@ -33,7 +53,91 @@
 	.travaux__selected{
 		background-color:white;
 	}
+}
 
 
+.lightbox {
+	position: fixed;
+	display: none;
+	top: 0;
+	margin-top: 0px;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+	background-repeat: no-repeat;
+	text-align: center;
+	background-color: rgba(0, 0, 0, 0.8);
+	background-position: center;
 
+	img {
+		  max-width: 100%;
+	  max-height: 100%;
+	  /* position: absolute;
+	  top: 50%;
+	  left: 50%;
+	  transform: translation(-50%); */
+	}
+
+	.lightbox__wrap {
+
+		display: inline-block;
+		position: relative;
+
+		.lightbox__title {
+		font-size: 30px;
+		text-align: left;
+		width: 100%;
+		color:#989170;
+		}
+
+		.lightbox__sous_titre {
+		font-size: 18px;
+		text-align: left;
+		width: 100%;
+		color:#989170;
+		}
+
+		.lightbox__description {
+		    font-size: 13px;
+		    padding-top: 11px;
+		    text-align: left;
+		}
+
+		.lightbox__wrap__close {
+			position: absolute;
+			width: 80px;
+			right: -90px;
+			top: -25px;
+			font-size: 50px;
+		}
+
+		.slider__next, .slider__prev {
+			position:absolute;
+			font-size: 50px;
+			color: #000;
+		}
+
+		.slider__next {
+			right:-100px;
+			top: 240px;
+		}
+
+		.slider__prev {
+			left:-80px;
+			top: 240px;
+		}
+	}
+}
+
+.lightbox .title {
+  width: 100%;
+  height: 50px;
+  text-align:center;
+  color:#989170;
+  font-size:30px;
+  font-weight:600;
+  display: block;
+  position: relative;
+  margin-left:-240px;
 }
