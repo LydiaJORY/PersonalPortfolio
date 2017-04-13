@@ -1,12 +1,4 @@
 
-$anime-time: 8s;
-$box-size: 100px;
-$clip-distance: .05;
-$clip-size: $box-size * (1 + $clip-distance * 2);
-$path-width: 2px;
-
-$main-color: white;
-
 /**
  * Bootstrap
  */
@@ -24,22 +16,25 @@ $main-color: white;
 @import "homepage";
 
 /**
- * General;
+ * TRAVAUX
  */
 @import "travaux";
 
 
 
-
 body {
-	color:white;
+	color:$main-color;
 	background: #222;
 }
 
 
 div {
 
-	 transition: width 0.6s ease-out, margin 0.6s ease-out;
+	transition: width 0.6s ease-out, margin 0.6s ease-out;
+}
+
+ul li {
+	list-style:none;
 }
 
 main {
@@ -67,11 +62,6 @@ main {
 	left: 10px;
 	font-size:12px;
 }
-
-#actualEcran {
-	display: block;
-}
-
 
 
 .contact {
