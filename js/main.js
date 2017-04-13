@@ -22,11 +22,9 @@ $(function(){
 lastUpdate();
 
 function lastUpdate() {
-    var date = document.lastModified;
-    document.getElementById("lastUpdate").innerHTML = date;
+    var date = new Date(document.lastModified);
+    document.getElementById("lastUpdate").innerHTML = date.toLocaleString([], {day:'2-digit', month: '2-digit', year:'2-digit'});
 }
-
-
 
 
 
