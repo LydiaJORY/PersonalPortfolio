@@ -8,13 +8,11 @@ $(function(){
     menuLi = $( "#menu li" );
     homepage = $("#homepage");
 
-
     // var hauteurFenetre   = $( window ).height();
     // var millieuFenetre = hauteurFenetre / 2;
     $(actualEcran).show();
    
 });
-
 
 
 // VANILLA JS

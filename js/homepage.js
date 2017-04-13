@@ -2,21 +2,20 @@ $(function(){
 
   $(document).ready(function() {
 
-    var i;
-    var PressNumber=0;
-    var nbItemMenu= menuLi.length;
-    var elementSelec = 1;
-    var firstItemMenu = $("#menu li:first-child");
-    var lastItemMenu = $("#menu li:last-child");
+    var i,
+        PressNumber=0,
+        nbItemMenu= menuLi.length,
+        elementSelec = 1,
+        firstItemMenu = $("#menu li:first-child"),
+        lastItemMenu = $("#menu li:last-child");
 
 //TRAVAUX
-
-    var projetSelecNb = 1;
-    var projetsBloc = $(".travaux__Bloc");
-    var projetsBlocParent = $(".travaux__item");
-    var FirstprojetsBlocParent = $(".travaux__item:first-child");
-    var LastprojetsBlocParent = $(".travaux__item:last-child");
-    var nbTravaux = projetsBloc.length;
+    var projetSelecNb = 1,
+        projetsBloc = $(".travaux__Bloc"),
+        projetsBlocParent = $(".travaux__item"),
+        FirstprojetsBlocParent = $(".travaux__item:first-child"),
+        LastprojetsBlocParent = $(".travaux__item:last-child"),
+        nbTravaux = projetsBloc.length;
     
 
     // Afficher les pages 
@@ -36,13 +35,13 @@ $(function(){
             if(projetSelecNb < nbTravaux){
 
               projetSelecNb++;
-              selected_projet.removeClass('travaux__selected').parent(projetsBlocParent).next().children(projetsBloc).addClass('travaux__selected');
+              selected_projet.removeClass('travaux__selected').parent().next().children().addClass('travaux__selected');
             }   
 
             else if (projetSelecNb >= nbTravaux){
               projetSelecNb = 1;
               selected_projet.removeClass("travaux__selected");
-              FirstprojetsBlocParent.children(projetsBloc).addClass("travaux__selected"); 
+              FirstprojetsBlocParent.children().addClass("travaux__selected"); 
             }       
           }
 
@@ -53,7 +52,7 @@ $(function(){
             if(projetSelecNb <= nbTravaux && projetSelecNb !== 1){
 
               projetSelecNb--;
-              selected_projet.removeClass('travaux__selected').parent(projetsBlocParent).prev().children(projetsBloc).addClass('travaux__selected');
+              selected_projet.removeClass('travaux__selected').parent().prev().children().addClass('travaux__selected');
             }   
 
             else if (projetSelecNb === 1){
@@ -61,32 +60,35 @@ $(function(){
               projetSelecNb = nbTravaux;
               selected_projet.removeClass("travaux__selected");
               $(".end").addClass("travaux__selected");
-              //LastprojetsBlocParent.children().addClass("travaux__selected");
             }       
           }
         });
       } 
     }
 
-  // COMPTEUR KeyPRESS
 
-    $(document).on('keyup', function(e) {
+  // COMPTEUR KeyPRESS & entrer dans une page
 
-      PressNumber++;
+    if ($(homepage).hasClass("actualEcran")) {
 
-      if (PressNumber===1) {
-        preeeStartbuttonPressed();
-      }
+      $(document).on('keyup', function(e) {
 
-      if (PressNumber>=2){
-        
-        if (e.keyCode == 13 || e.keyCode == 32) { // enter or space
+        PressNumber++;
 
-          var itemActif = $("#menu").find(".selected").attr('data-slide'); 
-          afficherNouvellePage(homepage,itemActif);
+        if (PressNumber===1) {
+          preeeStartbuttonPressed();
         }
-      }
-    });
+
+        if (PressNumber>=2){
+          
+          if (e.keyCode == 13 || e.keyCode == 32) { // enter or space
+
+            var itemActif = $("#menu").find(".selected").attr('data-slide'); 
+            afficherNouvellePage(homepage,itemActif);
+          }
+        }
+      });
+    }
 
     // PRESS START BUTTON
 
@@ -98,7 +100,7 @@ $(function(){
     }
 
 
-    $("body").click(function() {
+    $(homepage).click(function() {
         preeeStartbuttonPressed();
     });
 
